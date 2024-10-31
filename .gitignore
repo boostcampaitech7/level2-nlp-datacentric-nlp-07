@@ -3,3 +3,4 @@ data/
 level2_data_centric/
 code/wandb/
 output/
+*.csv
