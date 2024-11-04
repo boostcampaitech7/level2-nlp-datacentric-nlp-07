@@ -3,3 +3,4 @@ matplotlib
 seaborn
 cleanlab
 rank-bm25
+transformers
