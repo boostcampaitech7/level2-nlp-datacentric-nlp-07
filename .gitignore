@@ -4,3 +4,6 @@ level2_data_centric/
 code/wandb/
 output/
 *.csv
+level2_datacentric/
+.git/
+.github/
