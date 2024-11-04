@@ -9,16 +9,16 @@ from .constants import (
 
 class SpecialCharFilter(NoiseFilter):    
     def _replace_dots(self, df: pd.DataFrame) -> pd.DataFrame:
-        df['text'] = df['text'].str.replace('…', ' ', regex=False)
-        df['text'] = df['text'].str.replace('...', ' ', regex=False)
-        df['text'] = df['text'].str.replace('·', ' ', regex=False)
+        df[COLUMN_TEXT] = df[COLUMN_TEXT].str.replace('…', ' ', regex=False)
+        df[COLUMN_TEXT] = df[COLUMN_TEXT].str.replace('...', ' ', regex=False)
+        df[COLUMN_TEXT] = df[COLUMN_TEXT].str.replace('·', ' ', regex=False)
         return df
     
     def _replace_arrow(self, df: pd.DataFrame) -> pd.DataFrame:
-        df['text'] = df['text'].str.replace('→', '에서', regex=False)
-        df['text'] = df['text'].str.replace('↑', '상승', regex=False)
-        df['text'] = df['text'].str.replace('↓', '하락', regex=False)
-        df['text'] = df['text'].str.replace('↔', ' ', regex=False)
+        df[COLUMN_TEXT] = df[COLUMN_TEXT].str.replace('→', '에서', regex=False)
+        df[COLUMN_TEXT] = df[COLUMN_TEXT].str.replace('↑', '상승', regex=False)
+        df[COLUMN_TEXT] = df[COLUMN_TEXT].str.replace('↓', '하락', regex=False)
+        df[COLUMN_TEXT] = df[COLUMN_TEXT].str.replace('↔', ' ', regex=False)
         return df
     
     def filter_noise(self, data: pd.DataFrame) -> pd.DataFrame:
