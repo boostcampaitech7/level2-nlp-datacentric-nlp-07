@@ -1,9 +1,11 @@
 # 매직 넘버 및 리터럴 문자열 상수 정의
 ASCII_RATIO_THRESHOLD = 0.15
 ENGLISH_COUNT_THRESHOLD = 2
-SPECIAL_CHAR_RATIO_THRESHOLD = 0.03
+SPECIAL_CHAR_RATIO_THRESHOLD = 0.042
 CONTINUOUS_ENGLISH_LENGTH = 3
+PERCENT_PATTERN = r'\d+\.\d+%'
 SPECIAL_CHAR_PATTERN = r'(?<!\d)\.(?!\d)|(?<!\d)%|[^가-힣A-Z\u4E00-\u9FFF\s0-9\.%㎜㎡]'
+ARROWS = ['→', '←', '↑', '↓', '↔']
 
 # 컬럼명에 대한 상수 정의
 COLUMN_TEXT = 'text'
