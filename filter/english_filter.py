@@ -10,7 +10,7 @@ from .constants import (
 class EnglishFilter(NoiseFilter):
     # TODO: 채은한테 리뷰 꼭 받기!
     def filter_noise(self, data: pd.DataFrame) -> pd.DataFrame:
-        data[COLUMN_ENGLISH_COUNT] = data[COLUMN_TEXT].str.findall(r'[A-Za-z]').str.len()
+        data[COLUMN_ENGLISH_COUNT] = data[COLUMN_TEXT].str.findall(r'[A-Za-z]+').str.len()
         return data[data[COLUMN_ENGLISH_COUNT] >= ENGLISH_COUNT_THRESHOLD]
 
 class ContinuousEnglishFilter(NoiseFilter):
