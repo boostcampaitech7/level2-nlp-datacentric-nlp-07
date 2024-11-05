@@ -1,6 +1,6 @@
 # Step 1: Install required modules
 echo "Installing necessary modules..."
-pip install --user jupyter pipreqs
+pip install jupyter pipreqs nbconvert
 
 # Step 2: Backup existing requirements.txt if it exists
 if [ -f "requirements.txt" ]; then
