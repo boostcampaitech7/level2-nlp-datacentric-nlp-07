@@ -5,3 +5,6 @@ code/wandb/
 output/
 *.csv
 *.pyc
+level2_datacentric/
+.git/
+.github/
