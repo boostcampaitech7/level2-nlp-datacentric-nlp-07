@@ -8,3 +8,4 @@ output/
 level2_datacentric/
 .git/
 .github/
+*__pycache__*
