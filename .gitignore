@@ -9,3 +9,4 @@ level2_datacentric/
 .git/
 .github/
 *__pycache__*
+.DS_Store
