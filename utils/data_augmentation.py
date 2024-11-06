@@ -78,7 +78,7 @@ class BertBaseAugmentation:
             new_embedding = self.model.encode(new_text, convert_to_tensor=True, show_progress_bar=False)
             cosine_score = util.pytorch_cos_sim(original_embedding, new_embedding).item()
 
-            if cosine_score >= similarity_threshold:
+            if cosine_score >= similarity_threshold or abs(1 - cosine_score) >= 1e-6:
                 augmented_texts.append(new_text)
                 similarities.append(cosine_score)
                 generated_texts.add(new_text)
