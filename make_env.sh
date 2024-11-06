@@ -15,5 +15,6 @@ echo "1. Open a new terminal and run: ollama serve"
 echo "2. Return to original terminal and run:"
 echo "   ollama pull aya-expanse:32b"
 echo "   ollama pull aya-expanse:8b"
-echo "   ollama pull 
+echo "   ollama pull granite3-dense:8b"
+echo "   ollama pull granite3-dense:2b"
 echo "====================================="
