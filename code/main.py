@@ -28,7 +28,7 @@ elif torch.mps.is_available():
 
 class Model:
     def __init__(self, model_name=MODEL_NAME):
-        # ## Set Hyperparameters
+        # Set Hyperparameters
         random.seed(SEED)
         np.random.seed(SEED)
         torch.manual_seed(SEED)
@@ -36,15 +36,15 @@ class Model:
         torch.cuda.manual_seed_all(SEED)
 
         
-        # ## Load Tokenizer and Model
+        # Load Tokenizer and Model
         self.model_name = model_name
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
         self.model = AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=7).to(DEVICE)
  
-        # ## Define Dataset
+        # Define Dataset
         self.data_collator = DataCollatorWithPadding(tokenizer=self.tokenizer)
         
-        # ## Define Metrics
+        # Define Metrics
         self.metric = evaluate.load(METRICS)
         
         print(self.model, self.tokenizer, self.metric)
@@ -63,7 +63,7 @@ class Model:
     def train(self, dataset:pd.DataFrame):
         # Train Model
         
-        ### for wandb setting
+        #for wandb setting
         os.environ['WANDB_DISABLED'] = 'true'
 
         
@@ -108,7 +108,7 @@ class Model:
         trainer.train()        
         
     def evaluate(self, dataset_test:pd.DataFrame):
-        # ## Evaluate Model
+        # Evaluate Model
         self.model.eval()
         preds = []
 
