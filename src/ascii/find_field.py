@@ -1,9 +1,10 @@
 import pandas as pd
 from src.config.data_config import NewsProcessorConfig
-from src.utils.text_cleaner import TextCleaner 
+from src.config.path_config import ASCII_PATH_SCS, CLEAN_ASCII
+from src.utils.text_cleaner import TextCleaner
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_ollama.llms import OllamaLLM
-import re
+
 from tqdm import tqdm
 from typing import List, Dict, Optional
 
@@ -22,6 +23,18 @@ class NewsProcessor:
             temperature=self.config.temperature,
             seed=self.config.seed
         )
+        
+    def load_data(self, input_path: str = ASCII_PATH_SCS) -> pd.DataFrame:
+        """데이터 로드
+        
+        Args:
+            input_path: 입력 데이터 파일 경로
+            
+        Returns:
+            pd.DataFrame: 로드된 데이터
+        """
+        return pd.read_csv(input_path)
+    
     
     def check_field(self, random_samples: pd.DataFrame) -> str:
         """뉴스 분야 확인"""
@@ -99,23 +112,31 @@ class NewsProcessor:
         new_df.to_csv(output_path, index=False)
         return new_df
     
-def main():
-    # 설정 생성
-    config = NewsProcessorConfig(
-        model_name="aya-expanse:latest",
-        temperature=0,
-        seed=42,
-        sample_size=40,
-        random_state=1
-    )
-    
-    # 데이터 로드
-    data = pd.read_csv('ascii.csv')
-    
-    # 프로세서 초기화 및 실행
-    processor = NewsProcessor(config)
-    new_df = processor.process_data(data, 'test.csv')
-    print("정상화 완료!")
+    def save_data(self, df: pd.DataFrame, output_path: str) -> None:
+        """처리된 데이터 저장
+        
+        Args:
+            df: 저장할 데이터프레임
+            output_path: 저장할 파일 경로
+        """
+        df.to_csv(output_path, index=False)
+        print(f"Data saved to {output_path}")
 
-if __name__ == "__main__":
-    main()
+    def run(self) -> pd.DataFrame:
+        """전체 뉴스 처리 프로세스 실행
+        
+        Args:
+            input_path: 입력 데이터 파일 경로
+            output_path: 출력 데이터 저장 경로
+            
+        Returns:
+            pd.DataFrame: 처리된 뉴스 데이터
+        """
+        # 데이터 로드
+        data = self.load_data(ASCII_PATH_SCS)
+        
+        # 데이터 처리
+        processed_data = self.process_data(data, CLEAN_ASCII)
+        
+        print("정상화 완료!")
+        return processed_data
