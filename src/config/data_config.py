@@ -1,0 +1,1 @@
+BASIC_COLUMNS = ['ID', 'text', 'target']
