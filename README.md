@@ -19,7 +19,7 @@
 
 - 평가 지표는 `Macro F1 Score`를 기준으로 함
 
-### [대회 규칙](./docs/competition.md)
+### [대회 규칙](./docs/competition_rule.md)
 
 ## 😁 팀 소개
 
