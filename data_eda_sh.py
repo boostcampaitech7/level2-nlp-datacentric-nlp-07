@@ -1,7 +1,7 @@
 import pandas as pd
 import re
 
-class TextCleaner:
+class NoiseDataSeparator:
     def __init__(self, dataframe: pd.DataFrame, text_column: str):
         self.df = dataframe
         self.text_column = text_column
@@ -39,13 +39,13 @@ class TextCleaner:
 # 사용 예시
 if __name__ == "__main__":
     df = pd.read_csv('../data/train.csv')
-    cleaner = TextCleaner(dataframe=df, text_column='text')
+    separator = NoiseDataSeparator(dataframe=df, text_column='text')
     
     df_high_ratio, df_excluded = (
-        cleaner
+        separator
         .replace_symbols()
         .add_special_char_metrics()
         .filter_by_special_char_ratio(threshold=0.042)
     )
     
-    cleaner.save_to_csv('../data/df_high_ratio.csv', '../data/noise_free.csv')
+    separator.save_to_csv('../data/df_high_ratio.csv', '../data/noise_free.csv')
