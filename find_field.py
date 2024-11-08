@@ -76,7 +76,7 @@ class NewsProcessor:
         model = self._create_model()
         resolve_data = []
         
-        for text in tqdm(data[cond]['text'].tolist()[:1], desc=f"Processing {domain} news"):
+        for text in tqdm(data[cond]['text'].tolist(), desc=f"Processing {domain} news"):
             template = """
             다음은 {Domain} 분야의 뉴스 기사 제목입니다
             문서 목록: {Text}
