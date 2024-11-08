@@ -1,12 +1,12 @@
 import pandas as pd
 from src.config.path_config import DATA_PATH, ASCII_PATH_SCS, ASCII_PATH_S
-from src.config.data_config import BASIC_COLUMNS
+from src.config.data_config import BASIC_COLUMNS,ARROW_REPLACEMENTS, SPECIAL_CHAR_PATTERN
 import re
 from typing import Tuple, List
 
 
 class DataClassification:
-    def __init__(self, data_path: str, ascii_path_scs: str, ascii_path_s: str, basic_columns: List[str]):
+    def __init__(self):
         """
         Initialize DataClassification with file paths and configuration
         
@@ -16,11 +16,12 @@ class DataClassification:
             ascii_path_s: Path to save S filtered data
             basic_columns: List of basic columns to keep in output
         """
-        self.data_path = data_path
-        self.ascii_path_scs = ascii_path_scs
-        self.ascii_path_s = ascii_path_s
+        self.data_path = DATA_PATH
+        self.ascii_path_scs = ASCII_PATH_SCS
+        self.ascii_path_s = ASCII_PATH_S
         self.basic_columns = BASIC_COLUMNS
-        self.special_char_pattern = r'(?<!\d)\.(?!\d)|(?<!\d)%|[^가-힣A-Z\u4E00-\u9FFF\s0-9\.%㎜㎡]'
+        self.special_char_pattern = SPECIAL_CHAR_PATTERN
+        self.arrow_replacements = ARROW_REPLACEMENTS
         self.data = None
         
     def calculate_ascii(self, text: str) -> Tuple[int, bool, bool, float, float]:
