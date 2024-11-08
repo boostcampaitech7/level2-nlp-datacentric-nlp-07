@@ -9,7 +9,10 @@ level2_datacentric/
 .git/
 .github/
 *__pycache__*
-logs
-noisy_text_model
-results
-wandb
+.DS_Store
+logs/
+noisy_text_model/
+results/
+wandb/
+*.out
+*.log
