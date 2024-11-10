@@ -71,13 +71,14 @@
 
 총 3가지 방법으로 데이터 이상치를 탐지했습니다.
 
-1. ASCII 기반
+1. ASCII 여부 기반
 2. 특수 문자 필터링 기반
 3. 영문 필터링 기반
 
 #### 2.2 데이터 정상화
 
-텍스트 노이즈 정상화, 라벨 오류 정상화를 진행했습니다.
+1. ASCII로 오염된 텍스트 데이터 노이즈 정상화
+2. Label이 잘못 분류 된 데이터 라벨 오류 정상화를 진행했습니다..
 
 ### 3. [데이터 증강](./docs/data_augmentation.md)
 
@@ -85,7 +86,8 @@
 
 1. BERT 기반 마스킹
 2. LLM 활용 동의어 대체
-3. *TODO: 추가*
+3. LLM 기반 기사 생성
+4. Easy Data Augmentation(EDA)기반 `SR`, `RI`, `RS`, `RD`
 
 ### 4. 최종 순위
 
@@ -107,7 +109,7 @@
 - **PyTorch**: 모델 학습 및 튜닝
 - **Jupyter Notebook**: 데이터 분석 및 시각화
 - **LangChain**: 데이터 증강 실험
-- *TODO: 프로젝트 진행 경과 정리 이후 실험에서 사용한 도구/기술 정리*
+- **Ollama** : LLM을 활용하기 위한 도구 사용
 
 ## 실험 환경 및 하드웨어
 
@@ -122,3 +124,5 @@
 - **T5 모델**: Paper on "Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer"
 - **BM25 알고리즘**: Information Retrieval Journal
 - **Hugging Face**: [Hugging Face Documentation](https://huggingface.co/docs)
+- **Langchain Docs** : [Langchian Documentation](https://python.langchain.com/docs/introduction/)
+- **Ollama** : [Ollama Documentation](https://ollama.com/library)
